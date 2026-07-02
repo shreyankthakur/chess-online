@@ -1265,11 +1265,17 @@ export default function ChessApp() {
 
       <div className="cx-wrap">
         <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 18, flexWrap: "wrap", gap: 8 }}>
-          <h1 className="cx-title" style={{ fontSize: 30, fontWeight: 700, margin: 0 }}>Ember &amp; Onyx Chess</h1>
-          <div className="cx-thinking" style={{ minHeight: 16 }}>
-            {aiThinking && (<><span className="cx-dotpulse" /><span>Engine is thinking…</span></>)}
-          </div>
-        </div>
+         <div className="cx-brand">
+  <span className="cx-brand-mark">♞</span>
+  <div className="cx-brand-text">
+    <h1 className="cx-title">Satranj Ka Khel</h1>
+    <span className="cx-subtitle">शतरंज का खेल</span>
+  </div>
+</div>
+<div className="cx-thinking" style={{ minHeight: 16 }}>
+  {aiThinking && (<><span className="cx-dotpulse" /><span>Engine is thinking…</span></>)}
+</div>
+</div>
 
         <div className="cx-layout">
           <div className="cx-board-col">
@@ -1452,12 +1458,12 @@ export default function ChessApp() {
               <div className="cx-status-pill">Check — {gameState.turn === "w" ? "White" : "Black"} to move</div>
             )}
 
-            <div className="cx-btn-row">
-              <button className="cx-btn" onClick={() => handleNewGame()} disabled={mode === "online"}><RotateCcw size={14} /> New Game</button>
-              <button className="cx-btn" onClick={handleUndo} disabled={mode === "online" || snapshots.length === 0}><RotateCcw size={14} style={{ transform: "scaleX(-1)" }} /> Undo</button>
-              <button className="cx-btn" onClick={handleHint} disabled={hintLoading || !!gameOver}><Lightbulb size={14} /> Hint</button>
-              <button className="cx-btn" onClick={handleResign} disabled={!!gameOver || (mode === "online" && (!onlineInfo || !onlineInfo.guestJoined))}><Flag size={14} /> Resign</button>
-            </div>
+           <div className="cx-btn-row cx-actionbar">
+  <button className="cx-btn" onClick={() => handleNewGame()} disabled={mode === "online"}><RotateCcw size={14} /> <span>New Game</span></button>
+  <button className="cx-btn" onClick={handleUndo} disabled={mode === "online" || snapshots.length === 0}><RotateCcw size={14} style={{ transform: "scaleX(-1)" }} /> <span>Undo</span></button>
+  <button className="cx-btn" onClick={handleHint} disabled={hintLoading || !!gameOver}><Lightbulb size={14} /> <span>Hint</span></button>
+  <button className="cx-btn" onClick={handleResign} disabled={!!gameOver || (mode === "online" && (!onlineInfo || !onlineInfo.guestJoined))}><Flag size={14} /> <span>Resign</span></button>
+</div>
           </div>
         </div>
       </div>
